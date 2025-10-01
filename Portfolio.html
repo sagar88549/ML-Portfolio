@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sagar Goyal | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* --- CSS Variables for Easy Theme Management --- */
+:root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --secondary-color: #c7d2fe;
+    --background-color: #f0f2f5;
+    --text-color: #111827;
+    --subtle-text-color: #374151;
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    --card-hover-shadow: 0 12px 40px rgba(79, 70, 229, 0.25);
+    --border-radius: 16px;
+}
+
+/* --- General & Body Styles --- */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+/* --- Header --- */
+header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #e0e7ff, #c7d2fe, #f0f2f5, #e0e7ff);
+    background-size: 400% 400%;
+    animation: gradient-animation 15s ease infinite;
+}
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5em;
+    color: var(--primary-color);
+    text-shadow: 0 4px 15px rgba(255,255,255,0.8);
+    margin-bottom: 10px;
+}
+header p {
+    font-size: 1.2em;
+    color: var(--subtle-text-color);
+    max-width: 600px;
+}
+.subtitle { min-height: 1.2em; }
+.typing-cursor {
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+.social-links { margin-top: 25px; }
+.social-links a {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin: 0 15px;
+    transition: transform 0.3s;
+}
+.social-links a:hover {
+    transform: scale(1.2);
+    color: var(--primary-hover);
+}
+
+/* --- General Section & Card Styles --- */
+section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 50px;
+    position: relative;
+}
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+}
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--card-hover-shadow);
+}
+
+/* --- Grids for Sections --- */
+.skills-grid, .projects-grid, .education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* Specific Section Styles */
+#about p { text-align: center; max-width: 800px; margin: auto; font-size: 1.1em; }
+#education h3 { color: var(--primary-color); }
+.skills-card i { font-size: 2em; margin-bottom: 15px; color: var(--primary-color); display: block; text-align: center; }
+.skills-card { text-align: center; font-weight: 600; }
+.project-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; aspect-ratio: 16/9; object-fit: cover; }
+.project-card h3 { color: var(--primary-color); margin-bottom: 10px; }
+.btn {
+    display: inline-block; padding: 12px 24px; background: var(--primary-color); color: #fff; border-radius: 10px;
+    font-weight: 600; margin-top: 15px; box-shadow: 0 4px 15px rgba(79,70,229,0.3); transition: all 0.3s; text-decoration: none;
+}
+.btn:hover { transform: translateY(-3px); background: var(--primary-hover); box-shadow: 0 6px 20px rgba(79,70,229,0.5); }
+#certifications ul, #activities ul {
+    list-style: none; padding: 0; max-width: 700px; margin: auto;
+}
+#certifications li, #activities li {
+    background: var(--card-bg); margin-bottom: 15px; padding: 20px; border-radius: 10px;
+    border-left: 5px solid var(--primary-color); box-shadow: var(--card-shadow);
+    transition: transform 0.3s;
+}
+#certifications li:hover, #activities li:hover {
+    transform: translateX(5px);
+}
+#contact div { text-align: center; font-size: 1.1em; margin-bottom: 15px; }
+#contact a { color: var(--primary-color); font-weight: 600; }
+
+/* --- Footer --- */
+footer { text-align: center; padding: 30px; background: #e0e7ff; color: var(--primary-color); margin-top: 50px; }
+footer a { color: var(--primary-color); font-weight: bold; }
+
+/* --- Scroll-Triggered Animations --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Back to Top Button --- */
+#toTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none; /* Hidden by default */
+    opacity: 0;
+    transition: opacity 0.4s, transform 0.4s;
+    z-index: 100;
+}
+#toTopBtn.show {
+    display: block;
+    opacity: 1;
+}
+#toTopBtn:hover {
+    background: var(--primary-hover);
+    transform: scale(1.1);
+}
+
+/* --- Responsive Design --- */
+@media(max-width: 768px) {
+    header h1 { font-size: 2.5em; }
+    h2 { font-size: 2em; }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1 class="animate-on-scroll">Sagar Goyal</h1>
+    <p class="subtitle animate-on-scroll" data-wow-delay="0.2s">
+        <span id="typing-text"></span><span class="typing-cursor">|</span>
+    </p>
+    <div class="social-links animate-on-scroll" data-wow-delay="0.4s">
+        <a href="https://www.linkedin.com/in/sagar-goyal-4343a6268/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/sagar88549?tab=repositories" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+</header>
+
+<main>
+    <section id="about">
+        <h2 class="animate-on-scroll">About Me</h2>
+        <p class="animate-on-scroll" data-wow-delay="0.2s">
+            A dedicated and curious Information Technology student at IIIT Sonepat. I am passionate about leveraging my skills in software development, IoT, and machine learning to create innovative solutions. I am actively seeking opportunities to apply my knowledge and contribute to challenging projects that solve real-world problems.
+        </p>
+    </section>
+
+    <section id="education">
+        <h2 class="animate-on-scroll">Education</h2>
+        <div class="education-grid">
+            <div class="card animate-on-scroll">
+                <h3>B.Tech in Information Technology</h3>
+                <p><strong>Indian Institute of Information Technology (IIIT) Sonepat</strong></p>
+                <p>CGPA: 7.9 till 6th Semester</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="animate-on-scroll">Skills</h2>
+        <div class="skills-grid">
+            <div class="card skills-card animate-on-scroll" data-wow-delay="0s"><i class="fas fa-code"></i> C, C++, Java, Python</div>
+            <div class="card skills-card animate-on-scroll" data-wow-delay="0.1s"><i class="fas fa-laptop-code"></i> HTML, CSS, JS, Flask</div>
+            <div class="card skills-card animate-on-scroll" data-wow-delay="0.2s"><i class="fas fa-database"></i> Firebase, SQL</div>
+            <div class="card skills-card animate-on-scroll" data-wow-delay="0.3s"><i class="fas fa-microchip"></i> Arduino, ESP8266, MQTT</div>
+            <div class="card skills-card animate-on-scroll" data-wow-delay="0.4s"><i class="fas fa-chart-line"></i> scikit-learn, Pandas, KNN</div>
+            <div class="card skills-card animate-on-scroll" data-wow-delay="0.5s"><i class="fas fa-tools"></i> Git/GitHub, Canva, draw.io</div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="animate-on-scroll">Projects</h2>
+        <div class="projects-grid">
+            <div class="card project-card animate-on-scroll">
+                <img src="smartagriculture.png" alt="Smart Agriculture IoT">
+                <h3>Smart Agriculture IoT System</h3>
+                <p>Automated irrigation system using ESP8266, soil moisture & DHT11 sensors with Blynk app integration.</p>
+                <a href="https://github.com/sagar88549?tab=repositories" target="_blank" class="btn">View Code</a>
+            </div>
+            <div class="card project-card animate-on-scroll" data-wow-delay="0.2s">
+                <img src="portfolio.png" alt="Personal Portfolio Project">
+                <h3>Personal Portfolio Website</h3>
+                <p>Designed and built a responsive personal portfolio using HTML, CSS, and JavaScript to showcase my skills and projects.</p>
+                <a href="https://github.com/sagar88549?tab=repositories" target="_blank" class="btn">View Code</a>
+            </div>
+            <div class="card project-card animate-on-scroll" data-wow-delay="0.4s">
+                <img src="housepriceprediction.png" alt="House Price Prediction Model">
+                <h3>House Price Prediction</h3>
+                <p>Developed a machine learning model to predict house prices using Python, Pandas, and Scikit-learn for regression analysis.</p>
+                <a href="https://github.com/sagar88549?tab=repositories" target="_blank" class="btn">View Code</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2 class="animate-on-scroll">Certifications & Workshops</h2>
+        <ul class="animate-on-scroll">
+            <li>Infosys Springboard – Java/SQL Courses</li>
+            <li>HackerRank: Problem Solving, Java, SQL</li>
+            <li>NPTEL Courses (Machine Learning, DBMS)</li>
+        </ul>
+    </section>
+
+    <section id="activities">
+        <h2 class="animate-on-scroll">Activities</h2>
+        <ul class="animate-on-scroll">
+            <li><b>NSS Volunteer:</b> Leadership roles and active contribution to community service projects.</li>
+            <li><b>IIT Delhi Campus Ambassador:</b> Facilitated communication and engagement for Rendezvous.</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2 class="animate-on-scroll">Contact</h2>
+        <div class="animate-on-scroll" data-wow-delay="0.1s">Email: <a href="mailto:sagar88549@gmail.com">sagar88549@gmail.com</a></div>
+        <div class="animate-on-scroll" data-wow-delay="0.2s">Phone: +91-8854950603</div>
+        <div class="animate-on-scroll" data-wow-delay="0.3s">Location: Sonepat, Haryana, India</div>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 Sagar Goyal | <a href="https://github.com/sagar88549?tab=repositories" target="_blank">View My GitHub</a>
+</footer>
+
+<button id="toTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // --- Typing Effect ---
+    const typingText = document.getElementById('typing-text');
+    const texts = ["Information Technology", "IIIT Sonepat", "Aspiring System Engineer"];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeWriter() {
+        const currentText = texts[textIndex];
+        if (isDeleting) {
+            typingText.textContent = currentText.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typingText.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentText.length) {
+            isDeleting = true;
+            setTimeout(typeWriter, 2000); // Pause at end of word
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            setTimeout(typeWriter, 500); // Pause before starting new word
+        } else {
+            const typingSpeed = isDeleting ? 50 : 150;
+            setTimeout(typeWriter, typingSpeed);
+        }
+    }
+    typeWriter();
+
+
+    // --- Scroll-Triggered Animations ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const delay = parseInt(entry.target.getAttribute('data-wow-delay')) || 0;
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, delay * 1000);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+    elementsToAnimate.forEach(el => observer.observe(el));
+
+    // --- Back to Top Button ---
+    const toTopBtn = document.getElementById('toTopBtn');
+    window.onscroll = function() {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            toTopBtn.classList.add('show');
+        } else {
+            toTopBtn.classList.remove('show');
+        }
+    };
+    toTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+});
+</script>
+
+</body>
+</html>
